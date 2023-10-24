@@ -58,10 +58,18 @@ provider:
 
 functions:
   getProductsList:
-    handler: handler.getProductsList
+    handler: dist/bundle.getProductsList
     events:
       - http:
           path: products
+          method: get
+          cors: true
+
+  getProductById:
+    handler: dist/bundle.getProductsById
+    events:
+      - http:
+          path: /products/{id}
           method: get
           cors: true
 #      - websocket: $connect
